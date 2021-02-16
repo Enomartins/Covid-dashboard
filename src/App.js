@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react'
+import { getData } from './actions/data'
 import './App.css';
+import {useDispatch, useSelector} from 'react-redux'
+import Header from './components/Header'
+import List from './components/List';
 
 function App() {
+  const data = useSelector(state => state.data.data)
+   
+
+  // console.log(data)
+  
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  }, [dispatch])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>COVID 19- Nigerian Data</h1>
+      <Header {...data} />
+      
+      <h1>Confirmed Cases by States</h1>
+      <List {...data} />
+      
     </div>
   );
 }

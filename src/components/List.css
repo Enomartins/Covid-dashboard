@@ -1,0 +1,11 @@
+.tableContainer {
+    display: flex;
+}
+table {
+    margin: auto;
+}
+.title {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+}
